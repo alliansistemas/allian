@@ -1,0 +1,98 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block body %}
+    <div class="container_login">
+        <div class="text-center">
+            <h1 class="texto">Login</h1>
+
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="message-content">
+                                    {{ message }}
+                                </div>
+                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    {% elif message.tags == 'error' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="message-content">
+                                    {{ message }}
+                                </div>
+                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    {% elif message.tags == 'warning' %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="message-content">
+                                    {{ message }}
+                                </div>
+                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                            </div>
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <label for="username" class="form-label">Nome de Usuário:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="password" class="form-label">Senha:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                </div>
+                <div class="col-auto mx-auto">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">
+                        Entrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var alert = document.querySelector('.alert');
+    var progressBar = document.querySelector('.progress-bar');
+    var tempoExibicao = 5000;
+    var diminuirProgresso = function () {
+        var inicio = new Date().getTime();
+        var intervalo = 100; // Intervalo de atualização da barra de progresso (100ms).
+        var animacao = function () {
+            var agora = new Date().getTime();
+            var decorrido = agora - inicio;
+            var progresso = 100 - (decorrido / tempoExibicao) * 100;
+            progressBar.style.width = progresso + '%';
+            if (progresso > -10) {
+                requestAnimationFrame(animacao);
+            } else {
+                alert.style.display = 'none';
+            } }; animacao();
+    }; diminuirProgresso(); });
+document.addEventListener('DOMContentLoaded', function () {
+    var tempoExibicaoModal = 3000;
+    var fecharModal = function () {
+        $('#loadingModal').modal('hide');
+    }; setTimeout(fecharModal, tempoExibicaoModal); });
+</script>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Área do Usuário{% endblock %}
+{% block body %}
+
+    <h1 class="text-center" style="font-size: 30px; color:white;">Dashboard - {{ user.first_name }}</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="message-content">
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                    </div>
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="message-content">
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                    </div>
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="message-content">
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                    </div>
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+
+    <div class="container_tabela_tarefas text-center">
+        <h1 class="text-center">Tarefas do Dia</h1>
+        <table class="table table-bordered">
+            <thead thead class="table-dark">
+                <tr>
+                    <th scope="col" class="espaco-th">Descrição</th>
+                    <th scope="col" class="espaco-th">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if tarefas_do_dia %}
+                    {% for tarefa in tarefas_do_dia %}
+                        <tr>
+                            <td class="espaco-td">{{ forloop.counter }}. {{ tarefa.descricao }}</td>
+                            <td class="espaco-td">{{ tarefa.data_realizacao }}</td>
+                        </tr>
+
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="espaco-td">Nenhuma tarefa encontrada.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div class="mt-3 text-justify">
+            <strong>Total de Tarefas no Dia: {{ tarefas_do_dia|length }}</strong>
+        </div>
+    </div>
+
+    <div class="container_tabela_aniversariantes text-center">
+        <h1 class="text-center">Aniversariantes do Dia</h1>
+        <table class="table table-bordered">
+            <thead thead class="table-dark">
+                <tr>
+                    <th scope="col" class="espaco-th">Nome</th>
+                    <th scope="col" class="espaco-th">Empresa</th>
+                    <th scope="col" class="espaco-th">Aniversário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if clientes_aniversario %}
+                    {% for cliente in clientes_aniversario %}
+                        <tr>
+                            <td class="espaco-td">{{ cliente.nome }}</td>
+                            <td class="espaco-td">{{ cliente.empresa }}</td>
+                            <td class="espaco-td">{{ cliente.aniversario|date:"d - F" }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="espaco-td">Nenhum aniversariante do dia.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        var alert = document.querySelector('.alert');
+        var progressBar = document.querySelector('.progress-bar');
+        var tempoExibicao = 5000;
+        var diminuirProgresso = function () {
+            var inicio = new Date().getTime();
+            var intervalo = 100; // Intervalo de atualização da barra de progresso (100ms).
+            var animacao = function () {
+                var agora = new Date().getTime();
+                var decorrido = agora - inicio;
+                var progresso = 100 - (decorrido / tempoExibicao) * 100;
+                progressBar.style.width = progresso + '%';
+                if (progresso > -10) {
+                    requestAnimationFrame(animacao);
+                } else {
+                    alert.style.display = 'none';
+                } }; animacao();
+        }; diminuirProgresso(); });
+    document.addEventListener('DOMContentLoaded', function () {
+        var tempoExibicaoModal = 3000;
+        var fecharModal = function () {
+            $('#loadingModal').modal('hide');
+        }; setTimeout(fecharModal, tempoExibicaoModal); });
+    </script>
+
+{% endblock %}

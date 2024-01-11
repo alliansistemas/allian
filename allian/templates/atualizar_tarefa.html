@@ -1,0 +1,38 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Atualizar - Tarefas{% endblock %}
+{% block body %}
+    <div class="container_cadastro">
+        <div class="text-center">
+            <h1 class="texto">Atualizar Tarefa</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'atualizar_tarefa' tarefa.id %}">
+                {% csrf_token %}
+
+                <div class="col-md-12">
+                    <label for="descricao" class="form-label">Descrição:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="descricao" name="descricao" value="{{ tarefa.descricao }}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="cliente" class="form-label">Cliente:</label>
+                    <div class="col-11 mx-auto">
+                        <select class="form-select" id="cliente" name="cliente" required>
+                            {% for cliente in clientes %}
+                                <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'tarefas' %}" class="btn btn-secondary" style="margin-bottom: 10px;">Cancelar</a>
+                    <button type="submit" class="btn btn-success" style="margin-bottom: 10px;">
+                        Atualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

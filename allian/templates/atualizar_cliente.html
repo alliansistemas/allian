@@ -1,0 +1,44 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Atualizar - Clientes{% endblock %}
+{% block body %}
+    <div class="container_cadastro">
+        <div class="text-center">
+            <h1 class="texto">Atualizar Cliente</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'atualizar_cliente' cliente.id %}">
+                {% csrf_token %}
+
+                <div class="col-md-12">
+                    <label for="id_nome" class="form-label">Nome do Cliente:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="id_nome" name="id_nome" value="{{ cliente.nome }}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="id_aniversario" class="form-label">Data de Aniversário:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="date" class="form-control" id="id_aniversario" name="id_aniversario" pattern="\d{4}-\d{2}-\d{2}">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="id_empresa" class="form-label">Empresa:</label>
+                    <div class="col-10 mx-auto">
+                        <select class="form-select" id="id_empresa" name="id_empresa" required>
+                            {% for empresa in empresas %}
+                                <option value="{{ empresa.id }}">{{ empresa.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'clientes' %}" class="btn btn-secondary" style="margin-bottom: 10px;">Cancelar</a>
+                    <button type="submit" class="btn btn-success" style="margin-bottom: 10px;">
+                        Atualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+.botao_cadastro,
+.texto h2 {
+    color: #040c21;
+    position: absolute
+}
+
+.botao-cadastro,
+.botao-personalizado {
+    font-family: Roboto;
+    font-weight: 700;
+    text-decoration: none
+}
+
+.card.card-body {
+    width: 300px
+}
+
+@media (max-width:576px) {
+    .card.card-body {
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .cad_motorista {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto
+    }
+}
+
+.container_cadastro {
+    margin-top: 4rem;
+    background-color: #f8f9fa;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .5rem;
+}
+
+.botao_cadastro {
+    transform: translateX(-50%);
+    font-size: 25px;
+    padding: 10px 25px;
+    background: #fff;
+    top: 75%;
+    left: 60%;
+    border-radius: 15px;
+}
+
+.texto h2 {
+    font-family: Roboto;
+    font-size: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center
+}
+
+.cadastro-fonte {
+    font-family: Roboto
+}
+
+.cadastro-informativo {
+    color: #c2182b
+}
+
+.botao-atualizarrota,
+.botao-cadastrarrota,
+.botao-dellrota {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .3s
+}
+
+.botao-atualizarrota:hover,
+.botao-cadastrarrota:hover,
+.botao-dellrota:hover {
+    background-color: #882121;
+    transform: scale(1.05)
+}
+
+.botao-cancelaratualiza,
+.botao-cancelarcadastrar,
+.botao-dellcancell {
+    background-color: #8c67f1;
+    transform: scale(1.05)
+}
+
+.acao_dell:hover,
+.acao_editar:hover {
+    background-color: #e67540;
+    transform: scale(1.05)
+}
+
+.botao-personalizado {
+    color: #fff;
+    text-transform: uppercase;
+    background: #2e0dc2;
+    border-radius: 15px
+}
+
+.botao-personalizado:hover {
+    background: #e44202;
+    transition: .7s;
+    color: #fff;
+    box-shadow: 1px 1px 1px
+}
+
+
+/* Estilo para o container "containertutumotorista" */
+.containertutumotorista {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.containertutumotorista .img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+
+}
+
+.containertutumotorista .tutorial-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(6, 3, 172, 0.308);
+    padding: 8px;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.containertutumotorista .tutorial-title:hover {
+    transform: scale(0.9);
+}
+
+/* Estilo para o container "containertutupassageiro" */
+.containertutupassageiro {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.containertutupassageiro .img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+
+}
+
+.containertutupassageiro .tutorial-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(10, 116, 27, 0.3);
+    padding: 8px;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.containertutupassageiro .tutorial-title:hover {
+    transform: scale(0.9);
+}
+#principal {
+    display: block;
+}
+
+#endereco, #credenciais {
+    display: none;
+}
+
+.btn-ativo,
+    .btn-ativo:hover {
+        background-color: #ffA500; /* Cor laranja (substitua pelo seu valor desejado) */
+        color: #fff; /* Cor do texto (substitua pelo seu valor desejado) */
+    }
+
+    .btn-inativo:hover {
+        background-color: #fff; /* Cor de fundo padrão ao passar o mouse (substitua pelo seu valor desejado) */
+        color: #007bff; /* Cor do texto padrão ao passar o mouse (substitua pelo seu valor desejado) */
+    }
+
+.formatted-cpf {
+    font-family: Arial, sans-serif;
+    color: green;
+    /* Adicione outros estilos conforme necessário */
+}
+
+.custom-alert {
+    width: 96.78%; /* Ou qualquer largura desejada */
+    max-width: 100%; /* Para garantir que não ultrapasse o container */
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Inserir - Tarefa{% endblock %}
+{% block body %}
+    <div class="container_tarefas">
+        <div class="text-center">
+            <h1 class="texto">Inclusão de Tarefas</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'inserir_tarefas' %}">
+                {% csrf_token %}
+
+                <div class="col-md-12">
+                    <label for="descricao" class="form-label">Descrição:</label>
+                    <div class="col-11 mx-auto">
+                        <input type="text" class="form-control" id="descricao" name="descricao" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="cliente" class="form-label">Cliente/Responsável:</label>
+                    <div class="col-11 mx-auto">
+                        <select class="form-select" id="cliente" name="cliente" required>
+                            {% for cliente in clientes %}
+                                <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'tarefas' %}" class="btn btn-secondary" style="margin-bottom: 10px;">Cancelar</a>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">
+                        Inserir
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

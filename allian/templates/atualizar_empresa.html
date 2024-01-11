@@ -1,0 +1,38 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Atualizar - Empresas{% endblock %}
+{% block body %}
+    <div class="container_cadastro">
+        <div class="text-center">
+            <h1 class="texto">Atualizar Empresa</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'atualizar_empresa' empresa.id %}">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <label for="id_sistema" class="form-label">ID do Sistema:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="id_sistema" name="id_sistema" value="{{ empresa.id_sistema }}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="nome_empresa" class="form-label">Nome da Empresa:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" value="{{ empresa.nome }}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="nome_administrador" class="form-label">Responsável:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="nome_administrador" name="nome_administrador" value="{{ empresa.administrador }}" required>
+                    </div>
+                </div>
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'empresas' %}" class="btn btn-secondary" style="margin-bottom: 10px;">Cancelar</a>
+                    <button type="submit" class="btn btn-success" style="margin-bottom: 10px;">
+                        Atualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

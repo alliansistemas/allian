@@ -1,0 +1,39 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Deletar - Clientes{% endblock %}
+{% block body %}
+    <div class="container_cadastro">
+        <div class="text-center">
+            <h1 class="texto">Deletar Cliente</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'deletar_cliente' cliente.id %}">
+                {% csrf_token %}
+
+                <div class="col-md-12">
+                    <label for="id_nome" class="form-label">Nome do Cliente:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="id_nome" name="id_nome" value="{{ cliente.nome }}" readonly>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="id_empresa" class="form-label">Empresa:</label>
+                    <div class="col-10 mx-auto">
+                        <select class="form-select" id="id_empresa" name="id_empresa">
+                            {% if empresas %}
+                                <option value="{{ empresas.id }}">{{ empresas.nome }}</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+                <h1>Confirma exclusão de empresa? <br> <h6>Após esse processo, não será possível recuperar os dados deletados!</h6></h1>
+
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'clientes' %}" class="btn btn-secondary" style="margin-bottom: 10px;">Cancelar</a>
+                    <button type="submit" class="btn btn-danger" style="margin-bottom: 10px;">
+                        Deletar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Deletar - Empresas{% endblock %}
+{% block body %}
+    <div class="container_cadastro">
+        <div class="text-center">
+            <h1 class="texto">Deletar Dados</h1>
+            <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'deletar_empresa' empresa.id %}">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <label for="id_sistema" class="form-label">ID do Sistema:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="id_sistema" name="id_sistema" value="{{ empresa.id_sistema }}" readonly>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="nome_empresa" class="form-label">Nome da Empresa:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" value="{{ empresa.nome }}" readonly>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="nome_administrador" class="form-label">Responsável:</label>
+                    <div class="col-10 mx-auto">
+                        <input type="text" class="form-control" id="nome_administrador" name="nome_administrador" value="{{ empresa.administrador }}" readonly>
+                    </div>
+                </div>
+                <h1>Confirma exclusão de empresa? <br> <h6>Após esse processo, não será possível recuperar os dados deletados!</h6></h1>
+                <div class="col-auto mx-auto">
+                    <a href="{% url 'empresas' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger">
+                        Deletar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

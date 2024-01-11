@@ -1,0 +1,1 @@
+function mostrarCidades(){var estado=document.getElementById("cadastro-estado").value;var cidades=document.getElementById("cadastro-cidade");cidades.innerHTML="";for(var i=0;i<opcoes.length;i++){var opcao=document.createElement("option");opcao.value=opcoes[i];opcao.text=opcoes[i];cidades.add(opcao)}cidades.style.display="block"}

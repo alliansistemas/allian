@@ -1,0 +1,157 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Lista - Clientes{% endblock %}
+{% block body %}
+    <div class="container mt-4 bg-white rounded">
+        <h1 class="mb-4 text-center">Listagem de Clientes</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="message-content">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                        </div>
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                {% elif message.tags == 'error' %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="message-content">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                        </div>
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                {% elif message.tags == 'warning' %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="message-content">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Fechar"></button>
+                        </div>
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <table class="table table-bordered">
+            <thead thead class="table-dark">
+                <tr>
+                    <th scope="col">Opções</th>
+                    <th scope="col" style="align-items: center;">Nome do Cliente</th>
+                    <th scope="col" style="align-items: center;">Empresa</th>
+                    <th scope="col" style="align-items: center;">Aniversário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                        <td style="width: 100px;">
+                            <a href="{% url 'atualizar_cliente' cliente.id %}"><img class="botao_editar" src="{% static 'img/icone_editar.jpg' %}" alt="Editar"></a>
+                            <a href="{% url 'deletar_cliente' cliente.id %}"><img class="botao_deletar" src="{% static 'img/icone_deletar.png' %}" alt="Deletar"></a>
+                        </td>
+                        <td style="align-items: center;">{{ forloop.counter }}. {{ cliente.nome }}</td>
+                        <td style="align-items: center;">{{ cliente.empresa_cliente }}</td>
+                        <td style="align-items: center;">{{ cliente.data_aniversario|date:"d - F" }}</td>
+                    </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="align-items: center;">
+                        Nenhum cliente encontrado.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for page_number in page_obj.paginator.page_range %}
+                    {% if page_obj.number == page_number %}
+                        <li class="page-item active"><a class="page-link" href="#">{{ page_number }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="mt-3 text-justify">
+            <strong>Total de Clientes: {{ clientes|length }}</strong>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'cadastro_cliente' %}">
+                <button type="button" class="btn btn-primary botao-personalizado" style="margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Novo</button>
+            </a>
+        </div>
+
+
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var alert = document.querySelector('.alert');
+    var progressBar = document.querySelector('.progress-bar');
+    var tempoExibicao = 5000;
+    var diminuirProgresso = function () {
+        var inicio = new Date().getTime();
+        var intervalo = 100; // Intervalo de atualização da barra de progresso (100ms).
+        var animacao = function () {
+            var agora = new Date().getTime();
+            var decorrido = agora - inicio;
+            var progresso = 100 - (decorrido / tempoExibicao) * 100;
+            progressBar.style.width = progresso + '%';
+            if (progresso > -10) {
+                requestAnimationFrame(animacao);
+            } else {
+                alert.style.display = 'none';
+            } }; animacao();
+    }; diminuirProgresso(); });
+document.addEventListener('DOMContentLoaded', function () {
+    var tempoExibicaoModal = 3000;
+    var fecharModal = function () {
+        $('#loadingModal').modal('hide');
+    }; setTimeout(fecharModal, tempoExibicaoModal); });
+</script>
+{% endblock %}

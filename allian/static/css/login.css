@@ -1,0 +1,66 @@
+#login-form label {
+    color: #040c21
+}
+
+.container_login {
+    margin-top: 4rem;
+    background-color: #f8f9fa;
+    min-width: 20rem;
+    max-width: 20rem;
+    min-height:10rem;
+    max-height: 21rem;
+    padding-top: 1rem;
+    border-radius: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Adicione isso ao seu arquivo CSS ou no estilo no próprio HTML */
+.container-estreito {
+    max-width: 800px; /* ou a largura desejada em pixels ou qualquer outra unidade */
+    margin: 0 auto; /* centralizar o container */
+}
+.container-menu {
+    max-width: 800px; /* ou a largura desejada em pixels ou qualquer outra unidade */
+    margin: 0 auto; /* centralizar o container */
+}
+
+.botao_login {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .3s;
+    transform: scale(1);
+}
+
+.botao_login:hover {
+    background-color: #882121;
+    transform: scale(1.05);
+}
+
+div#inputPass input,
+div#pass input,
+div#tel input {
+    width: 200px
+}
+
+div#inputEmail input {
+    width: 400px
+}
+
+form#login button {
+    position: absolute;
+    top: auto;
+    left: 320px
+}
+
+h3 {
+    display: none
+}

@@ -1,0 +1,32 @@
+#portfoto01,
+#portfoto02 {
+    margin-bottom: -5%;
+    margin-top: -5%
+}
+
+#itens {
+    line-height: 30px
+}
+
+.dropdown {
+    position: fixed;
+    top: 10%;
+    width: 10%;
+    font-family: Roboto
+}
+
+.card-text,
+.lead mb-4 {
+    text-align: justify
+}
+
+#portfoto01 {
+    width: 75%;
+    position: relative;
+    left: 12%
+}
+
+#portfoto03 {
+    margin-bottom: 5%;
+    margin-top: -5%
+}
