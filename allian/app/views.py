@@ -2,7 +2,7 @@ from datetime import date
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
@@ -185,6 +185,46 @@ def inserir_tarefas(request):
     # Obtém a lista de clientes para exibir no formulário
     clientes = Membro.objects.all()
     return render(request, 'inserir_tarefas.html', {'clientes': clientes})
+
+
+def atualizar_tarefa(request, pk):
+    # Obtém a tarefa existente que será atualizada
+    tarefa = get_object_or_404(Tarefa, id=pk)
+
+    if request.method == 'POST':
+        descricao = request.POST.get('descricao')
+        responsavel = request.POST.get('cliente')
+
+        if descricao and responsavel:
+            clientes = Membro.objects.get(pk=responsavel)
+
+            # Atualiza os campos da tarefa
+            tarefa.descricao = descricao
+            tarefa.nome_cliente = clientes
+            tarefa.save()
+
+            messages.success(request, 'Tarefa atualizada com sucesso!')
+            return redirect('tarefas')
+        else:
+            messages.error(request, 'Por favor, preencha todos os campos.')
+
+    # Obtém a lista de clientes para exibir no formulário
+    clientes = Membro.objects.all()
+
+    # Renderiza a página de atualização de tarefas com os dados da tarefa existente
+    return render(request, 'atualizar_tarefa.html', {'clientes': clientes, 'tarefa': tarefa})
+
+
+def deletar_tarefa(request, pk):
+    tarefa = get_object_or_404(Tarefa, id=pk)
+
+    if request.method == 'POST':
+        tarefa.delete()
+        messages.success(request, 'Tarefa deletada com sucesso!')
+        return redirect('tarefas')
+
+    # Renderiza a página de confirmação de exclusão da tarefa
+    return render(request, 'deletar_tarefa.html', {'tarefa': tarefa})
 
 
 @login_required

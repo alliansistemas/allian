@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Atualizar - Tarefas{% endblock %}
 {% block body %}
-    <div class="container_cadastro">
+    <div class="container_tarefas">
         <div class="text-center">
             <h1 class="texto">Atualizar Tarefa</h1>
             <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'atualizar_tarefa' tarefa.id %}">
@@ -10,16 +10,18 @@
 
                 <div class="col-md-12">
                     <label for="descricao" class="form-label">Descrição:</label>
-                    <div class="col-10 mx-auto">
+                    <div class="col-11 mx-auto">
                         <input type="text" class="form-control" id="descricao" name="descricao" value="{{ tarefa.descricao }}" required>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <label for="cliente" class="form-label">Cliente:</label>
-                    <div class="col-11 mx-auto">
+                    <div class="col-6 mx-auto">
                         <select class="form-select" id="cliente" name="cliente" required>
-                            {% for cliente in clientes %}
-                                <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                            {% for membro in clientes %}
+                                <option value="{{ membro.id }}" {% if membro.id == tarefa.nome_cliente.id %}selected{% endif %}>
+                                    {{ membro.nome }}
+                                </option>
                             {% endfor %}
                         </select>
                     </div>
