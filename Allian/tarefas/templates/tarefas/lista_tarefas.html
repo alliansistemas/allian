@@ -63,7 +63,8 @@
                     <tr>
                         <th scope="col">Opções</th>
                         <th scope="col" style="align-items: center;">Atividade</th>
-                        <th scope="col" style="align-items: center;">Responsável - Empresa</th>
+                        <th scope="col" style="align-items: center;">Cliente - Empresa</th>
+                        <th scope="col" style="align-items: center;">Colaborador</th>
                         <th scope="col" style="align-items: center;">Data</th>
                     </tr>
                 </thead>
@@ -78,6 +79,7 @@
                                     </td>
                                     <td style="align-items: center;" class="task-item">{{ forloop.counter }}. {{ tarefa.atividade }}</td>
                                     <td style="align-items: center;" class="task-item">{{ tarefa.nome_cliente }} - ({{ tarefa.nome_cliente.empresa_cliente }})</td>
+                                    <td style="align-items: center;" class="task-item ">{{ tarefa.colaborador }}</td>
                                     <td style="align-items: center;" class="task-item">{{ tarefa.data_realizacao|date:"d/m/y | H:i" }}</td>
                                 {% else %}
                                     <td style="width: 75px;" class="task-item done">
@@ -86,6 +88,7 @@
                                     </td>
                                     <td style="align-items: center;" class="task-item done">{{ forloop.counter }}. {{ tarefa.atividade }}</td>
                                     <td style="align-items: center;" class="task-item done">{{ tarefa.nome_cliente }} - ({{ tarefa.nome_cliente.empresa_cliente }})</td>
+                                    <td style="align-items: center;" class="task-item done">{{ tarefa.colaborador }}</td>
                                     <td style="align-items: center;" class="task-item done">{{ tarefa.data_realizacao|date:"d/m/y | H:i" }}</td>
                                 {% endif %}
                             </tr>

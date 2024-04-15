@@ -3,7 +3,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-22#vuyvl4p*wf_8+#9uq=n6sdrc&rfibq$slgnv2py*6fvsjhd'
 DEBUG = True
-ALLOWED_HOSTS = ['allian.pythonanywhere.com']
+ALLOWED_HOSTS = ['allian.pythonanywhere.com', '127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -18,7 +18,6 @@ INSTALLED_APPS = [
     'detalhes',
     'crispy_forms',
     'crispy_bootstrap5',
-    'notifications',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
