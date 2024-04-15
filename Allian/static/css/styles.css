@@ -1,0 +1,414 @@
+body {
+    background-color: #8b008b;
+    font-size: 15px;
+    font-family: Times;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.container-fluid .row {
+    margin: 0;
+}
+
+/*NavBar*/
+
+.navbar {
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* Ícone de notificação */
+
+.notification-icon, .notification-count {
+    /* Estilo padrão do ícone de sino */
+    font-size: 24px;
+}
+
+.notification-count {
+    /* Estilo padrão do ícone de sino */
+    font-size: 16px;
+}
+
+.has-notifications {
+    /* Estilo do ícone de sino quando há notificações não lidas */
+    color: red; /* Cor vermelha para indicar notificações não lidas */
+    animation: pulse 0.5s infinite alternate; /* Animação de pulsação para destacar o ícone */
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.2); /* Escala do ícone durante a animação de pulsação */
+    }
+}
+
+.list-group {
+    position: fixed; /* Define a posição como fixa */
+    top: 50px; /* Ajuste a distância do topo conforme necessário */
+    right: 200px; /* Ajuste a distância da direita conforme necessário */
+    max-width: 300px; /* Defina uma largura máxima para a lista de grupo */
+    background-color: #fff; /* Cor de fundo da lista de grupo */
+    border: 1px solid #ccc; /* Borda da lista de grupo */
+    padding: 10px; /* Espaçamento interno da lista de grupo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito visual */
+    z-index: 1000; /* Z-index para garantir que a lista esteja acima de outros elementos */
+    display: none; /* Oculta a lista inicialmente */
+}
+
+/* Dashboard*/
+
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 17px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #3476e2;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #db1e47;
+}
+
+/*Botão de adicionar*/
+
+#add-link {
+    text-decoration: none;
+}
+
+.add-div {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 20px;
+    width: 80px;
+}
+
+.fas.fa-plus {
+    color: #FFF;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/*Search*/
+
+.fas.fa-search {
+    position: absolute;
+    top: 43px;
+    right: 26px;
+    cursor: pointer;
+}
+
+.search-div {
+    position: relative;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.data-div {
+    position: relative;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Filter*/
+
+.filter-div {
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#filter {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+}
+
+/*Lista de tarefas*/
+
+.list-div {
+    padding: 0;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-item {
+    list-style: none;
+    font-size: 16px;
+    height: 50px;
+    padding: 0 15px;
+    padding-top: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.task-item.done {
+    background-color: #90ee90;
+}
+
+.fas.fa-trash, .fas.fa-edit, .fas.fa-check, .fas.fa-sharp.fa-solid.fa-desktop, .fas.fa-sharp.fa-solid.fa-circle-info {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.fas.fa-trash {
+    color: #db1e47;
+}
+
+.fas.fa-edit {
+    color: #13c43f;
+}
+
+.fas.fa-sharp.fa-solid.fa-desktop {
+    color: #939;
+}
+
+.fas.fa-sharp.fa-solid.fa-circle-info {
+    color: #ffff61;
+}
+
+.fas.fa-check {
+    color: #CCC;
+}
+
+.done .fas.fa-check {
+    color: #3476e2;
+}
+
+/*Rodapé*/
+
+footer {
+    background-color: #333;
+    height: 100px;
+    margin-top: 5%;
+    border-top: 2px solid #202020;
+}
+
+footer p {
+    color: #f5f5f5;
+    text-align: center;
+    top: 50%;
+    position: relative;
+}
+
+/* Messages */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}
+
+/*Paginação*/
+
+.pagination {
+    margin-bottom: 20px;
+}
+
+.step-links {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .current {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*Login*/
+
+.auth-card {
+    margin-bottom: 30px;
+}
+
+#btn-login {
+    padding-left: -20%;
+    padding-right: -20%;
+}
+
+/* Register*/
+
+#btn-register {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.change-form-p {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/*Containers do Dashboard*/
+
+.espaco-th {
+    padding-right: 200px; /* Ajuste conforme necessário para o espaçamento desejado */
+    padding-left: 100px;
+    text-align: center;
+}
+.espaco-td {
+    padding-right: 93px; /* Ajuste conforme necessário para o espaçamento desejado */
+    padding-left: auto;
+    text-align: center;
+}
+
+.container_tabela_tarefas,
+.container_tabela_aniversariantes {
+    box-sizing: border-box;
+    background-color: #DFDFDF;
+    width: 80%;
+    height: 50%;
+    border-radius: .5rem;
+    margin: 10px; /* Adicione margens para espaçamento entre as tabelas */
+}
+
+.container_tabela_tarefas {
+    margin-left: 10%; /* Adicione margem direita para espaçamento entre as tabelas */
+}
+
+.container_tabela_aniversariantes {
+    margin-left: 10%; /* Adicione margem esquerda para espaçamento entre as tabelas */
+}
+
+@media (max-width: 768px) {
+    .container_tabela_tarefas,
+    .container_tabela_aniversariantes {
+        width: 100%; /* Para tornar as tabelas empilhadas em dispositivos menores */
+        margin: 10px 0; /* Adicione margens para espaçamento entre as tabelas em dispositivos menores */
+    }
+}
+
+/*Modal de confirmação*/
+
+.modal.vibrate {
+    animation: vibrate 1s;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+/*Faixa da paginação*/
+
+.breadcrumb {
+    background-color: #CCC;
+    padding: 1%;
+}
+
+/*Formulários*/
+
+.titulo {
+    margin-left: 20px;
+}
+
+.botoes {
+    margin-bottom: 10px;
+}
+
+.formularios {
+    margin-left: 15px; margin-right: 15px;
+}
+
+/*Messages*/
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}
+
+/*Listas*/
+.custom-dropdown {
+    width: 200px;  /* Defina a largura desejada */
+    /* Adicione mais estilos conforme necessário */
+}
+
+/*Tabelas*/
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table-rounded {
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.table-rounded thead th:first-child {
+    border-top-left-radius: 15px;
+}
+
+.table-rounded thead th:last-child {
+    border-top-right-radius: 15px;
+}
+
+.breadcrumb {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px;
+}
